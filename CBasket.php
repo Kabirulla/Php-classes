@@ -15,7 +15,9 @@
         {                                    
             if($rowUser=$this->CheckForUser())
             {
-                $res=$this->con->query("SELECT Goods.id AS id_goods, Goods.name AS name,Goods.price AS price, Basket.count AS count,Basket.id AS id_basket, GoodsImg.src AS src FROM Goods LEFT JOIN Basket ON Goods.id=Basket.id_goods LEFT JOIN GoodsImg ON Goods.id=GoodsImg.id_goods WHERE Basket.id_user='".$rowUser['id']."' AND Basket.action='0' ORDER BY Basket.id");
+                $res=$this->con->query("SELECT Goods.id AS id_goods, Goods.name AS name,Goods.price AS price, Basket.count AS count,
+		Basket.id AS id_basket, GoodsImg.src AS src FROM Goods LEFT JOIN Basket ON Goods.id=Basket.id_goods LEFT JOIN GoodsImg 
+		ON Goods.id=GoodsImg.id_goods WHERE Basket.id_user='".$rowUser['id']."' AND Basket.action='0' ORDER BY Basket.id");
                 $massive[]=null;
                 for($i=0;$row=$res->fetch_assoc();$i++)
                 {
